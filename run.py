@@ -389,7 +389,8 @@ def init_rootfs(sysroot: str, config: MultistrapConfig, force=False):
 
 COMMON_GN_ARGS = [
     "rtc_include_tests=false",
-    "rtc_use_h264=false",
+    "rtc_use_h264=true",
+    "rtc_use_h265=true",
     "is_component_build=false",
     'rtc_build_examples=false',
     "use_rtti=true",
@@ -480,7 +481,7 @@ def build_webrtc_ios(
     gn_args_base = [
         'rtc_libvpx_build_vp9=true',
         'libcxx_abi_unstable=false',
-        'enable_dsyms=true',
+        'enable_dsyms=false',
         'use_lld=false',
         'rtc_enable_objc_symbol_export=true',
         *COMMON_GN_ARGS,
