@@ -76,7 +76,7 @@ pushd $SOURCE_DIR/webrtc/src
       is_debug=false
       rtc_include_tests=false
       rtc_build_examples=false
-      rtc_use_h264=false
+      rtc_use_h264=true
       use_rtti=true
       libcxx_abi_unstable=false
     "
