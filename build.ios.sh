@@ -25,13 +25,8 @@ pushd $SOURCE_DIR/webrtc
 popd
 
 pushd $SOURCE_DIR/webrtc/src
-  patch -p2 < $SCRIPT_DIR/patches/4k.patch
-  patch -p2 < $SCRIPT_DIR/patches/macos_h264_encoder.patch
-  patch -p2 < $SCRIPT_DIR/patches/macos_av1.patch
-  patch -p1 < $SCRIPT_DIR/patches/macos_simulcast.patch
   patch -p1 < $SCRIPT_DIR/patches/h265.patch
   patch -p1 < $SCRIPT_DIR/patches/macos_h265.patch
-  patch -p1 < $SCRIPT_DIR/patches/ios_manual_audio_input.patch
 popd
 
 pushd $SOURCE_DIR/webrtc/src
@@ -39,7 +34,7 @@ pushd $SOURCE_DIR/webrtc/src
     rtc_libvpx_build_vp9=true \
     rtc_include_tests=false \
     rtc_build_examples=false \
-    rtc_use_h264=false \
+    rtc_use_h264=true \
     use_rtti=true \
     libcxx_abi_unstable=false \
   "

@@ -28,11 +28,11 @@ COPY scripts/install_webrtc_build_deps.sh /root/scripts/
 RUN /root/scripts/install_webrtc_build_deps.sh $SOURCE_DIR android
 
 # 普通の aar
-COPY patches/4k.patch /root/patches/
+COPY patches/h265.patch /root/patches/
 COPY patches/android_webrtc_version.patch /root/patches/
 COPY android/WebrtcBuildVersion.java $SOURCE_DIR/webrtc/src/sdk/android/api/org/webrtc/
 RUN cd $SOURCE_DIR/webrtc/src \
-  && patch -p2 < /root/patches/4k.patch \
+  && patch -p2 < /root/patches/h265.patch \
   && patch -p1 < /root/patches/android_webrtc_version.patch
 
 RUN cd /root/_source/android/webrtc/src \
@@ -43,7 +43,7 @@ RUN cd /root/_source/android/webrtc/src \
       --extra-gn-args ' \
         is_java_debug=false \
         rtc_include_tests=false \
-        rtc_use_h264=false \
+        rtc_use_h264=true \
         is_component_build=false \
         use_rtti=true \
       '
@@ -54,7 +54,7 @@ RUN cd $SOURCE_DIR/webrtc/src \
     target_os="android" \
     target_cpu="arm" \
     is_debug=false \
-    rtc_use_h264=false \
+    rtc_use_h264=true \
     rtc_include_tests=false \
     rtc_build_json=true \
     use_rtti=true \
