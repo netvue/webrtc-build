@@ -168,6 +168,8 @@ PATCH_INFO = {
     'macos_screen_capture.patch': (2, []),
     'ios_bitcode.patch': (1, ['build']),
     'ios_disable_iossim.patch': (1, ['build']),
+    'h265.patch': (1, []),
+    'macos_h265.patch': (1, []),
 }
 
 PATCHES = {
@@ -184,6 +186,8 @@ PATCHES = {
         'macos_simulcast.patch',
         'ios_simulcast.patch',
         'ssl_verify_callback_with_native_handle.patch',
+        'h265.patch',
+        'macos_h265.patch',
     ],
     'macos_arm64': [
         'add_dep_zlib.patch',
@@ -193,6 +197,8 @@ PATCHES = {
         'macos_simulcast.patch',
         'ios_simulcast.patch',
         'ssl_verify_callback_with_native_handle.patch',
+        'h265.patch',
+        'macos_h265.patch',
     ],
     'ios': [
         'add_dep_zlib.patch',
@@ -205,6 +211,8 @@ PATCHES = {
         'ssl_verify_callback_with_native_handle.patch',
         'ios_bitcode.patch',
         'ios_disable_iossim.patch',
+        'h265.patch',
+        'macos_h265.patch',
     ],
     'android': [
         'add_dep_zlib.patch',
@@ -213,6 +221,7 @@ PATCHES = {
         'android_webrtc_version.patch',
         'android_fixsegv.patch',
         'android_simulcast.patch',
+        'h265.patch',
     ],
     'raspberry-pi-os_armv6': [
         'nacl_armv6_2.patch',
@@ -462,7 +471,7 @@ def build_webrtc_ios(
         'use_xcode_clang=true',
         'rtc_libvpx_build_vp9=true',
         'libcxx_abi_unstable=false',
-        'enable_dsyms=true',
+        'enable_dsyms=false',
         'use_lld=false',
         'rtc_enable_objc_symbol_export=true',
         *COMMON_GN_ARGS,
